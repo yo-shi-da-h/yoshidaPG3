@@ -1,7 +1,9 @@
 #include <stdio.h>
-
+#include <Windows.h>
 int main() {
-	printf("Hello PG3!");
+	SetConsoleOutputCP(65001);
+
+	printf("ああああ");
 
 	return 0;
 }
