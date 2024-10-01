@@ -3,7 +3,7 @@
 int main() {
 	SetConsoleOutputCP(65001);
 
-	printf("ああああ");
+	printf("ああ");
 
 	return 0;
 }
