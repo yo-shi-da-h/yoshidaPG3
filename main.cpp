@@ -3,7 +3,9 @@
 int main() {
 	SetConsoleOutputCP(65001);
 
-	printf("ああ");
+	char str[] = "ソ";
+
+	printf("%s",str);
 
 	return 0;
 }
