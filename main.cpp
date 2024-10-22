@@ -1,65 +1,53 @@
-#include <stdio.h>
+#include <iostream>
 #include <Windows.h>
-#include <stdlib.h>
-#include <time.h>
+#include <cstdlib>
+#include <ctime>
+#include <functional>
 
-typedef void (*PFunc)(int *);
-
-void DispResult(int* s) {
-	printf("%d秒待って実行されたよ\n", *s);
-}
-
-void setTimeout(PFunc p, int second) {
-
-	Sleep(second * 1000);
-
-	p(&second);
+void setTimeout(std::function<void(int*)> func, int second) {
+    Sleep(second * 1000);
+    func(&second);
 }
 
 int main() {
-	
-	
-
-	 int userChoice; 
+    int userChoice;
     int dice;
 
     
-    srand(time(0)); 
+    srand(static_cast<unsigned int>(time(0)));
+    dice = rand() % 6 + 1; 
 
-    dice = rand() % 6 + 1;  
+    std::cout << "サイコロの目を奇数か偶数かを当てる。\n";
+    std::cout << "1: 奇数, 2: 偶数\n";
+    std::cout << "選択肢を入力 (1または2): ";
+    std::cin >> userChoice;
 
-    
-    printf("サイコロの目を奇数か偶数かを当てる。\n");
-    printf("1: 奇数, 2: 偶数\n");
-    printf("選択肢を入力 (1または2): ");
-    scanf_s("%d", &userChoice);
-
-     printf("start\n");
-
-	PFunc p;
-	p = DispResult;
-	setTimeout( p,3);
+    std::cout << "start\n";
 
     
-    printf("サイコロの目は: %d\n", dice);
+    std::function<void(int*)> callback = [](int* s) {
+        std::cout << *s << "秒待って実行されたよ\n";
+    };
 
-   
+    
+    setTimeout(callback, 3);
+
+    std::cout << "サイコロの目は: " << dice << std::endl;
+
+    
     if (dice % 2 == 0) {
-        
         if (userChoice == 2) {
-            printf("正解\n");
+            std::cout << "正解\n";
         } else {
-            printf("不正解\n");
+            std::cout << "不正解\n";
         }
     } else {
-        
         if (userChoice == 1) {
-            printf("正解\n");
+            std::cout << "正解\n";
         } else {
-            printf("不正解\n");
+            std::cout << "不正解\n";
         }
     }
-   
 
-	return 0;
+    return 0;
 }
