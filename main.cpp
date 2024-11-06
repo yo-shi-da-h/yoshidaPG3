@@ -1,9 +1,18 @@
+#include "Animal.h"
 #include <stdio.h>
-#include <Windows.h>
+#include <vector>
+#include <memory>
+
 int main() {
-	SetConsoleOutputCP(65001);
+    
+    std::vector<std::unique_ptr<Animal>> animals;
+    
+    animals.push_back(std::make_unique<Dog>());
+    animals.push_back(std::make_unique<Cat>());
 
-	printf("ああああ");
+    for (const auto& animal : animals) {
+        animal->makeSound();
+    }
 
-	return 0;
+    return 0;
 }
