@@ -20,7 +20,7 @@ int main() {
 	// 昇順に並べ替え
 	cout << endl << "全要素をソートします" << endl << endl;
 
-	sort();
+	sort(meibo.begin(),meibo.end());
 
 	cout << "全要素を表示します(ソート後)" << endl;
 
