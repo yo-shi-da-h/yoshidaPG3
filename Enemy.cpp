@@ -4,7 +4,8 @@
 void (Enemy::* Enemy::functionTable[])() = {
 
     &Enemy::Getcloser,
-    &Enemy::separation
+    &Enemy::separation,
+    &Enemy::LeaveUpdate 
 
 };
 
@@ -32,4 +33,9 @@ void Enemy::separation() {
 
     printf("Enemy is retreating.\n");
 
+}
+
+void Enemy::LeaveUpdate()
+{
+	printf("Enemy is withdrawal");
 }

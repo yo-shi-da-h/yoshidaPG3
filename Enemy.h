@@ -12,7 +12,7 @@ private:
 
     void Getcloser();
     void separation();
-
+    void LeaveUpdate();
 
     static void (Enemy::* functionTable[])();
 
